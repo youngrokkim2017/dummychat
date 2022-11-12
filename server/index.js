@@ -26,7 +26,12 @@ io.on('connection', (socket) => {
         socket.emit('message-from-server', data)
         // console.log('message received', data)
     })
+
+    socket.on('disconnect', (socket) => {
+        console.log('socket disconnected')
+    })
 })
+
 
 httpServer.listen(PORT, () => {
     console.log(`server is running at port ${PORT}`)

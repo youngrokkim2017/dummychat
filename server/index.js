@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     // console.log('socket connection is ready')
     socket.on('send-message', (data) => {
-        socket.emit('message-from-server', data)
+        socket.broadcast.emit('message-from-server', data)
         // console.log('message received', data)
     })
 

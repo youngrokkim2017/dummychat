@@ -27,6 +27,14 @@ io.on('connection', (socket) => {
         // console.log('message received', data)
     })
 
+    socket.on('typing-started', () => {
+        socket.broadcast.emit('typing-started-from-server')
+    })
+
+    socket.on('typing-stopped', () => {
+        socket.broadcast.emit('typing-stopped-from-server')
+    })
+
     socket.on('disconnect', (socket) => {
         console.log('socket disconnected')
     })

@@ -10,8 +10,10 @@ function App() {
     <div className="App">
       <Container>
         <Header />
-        <Outlet />
-        {/* <ChatWindow /> */}
+        <Box sx={{ display: flex, justfiyContent: 'center' }}>
+          <Outlet />
+          {/* <ChatWindow /> */}
+        </Box>
       </Container>
     </div>
   );

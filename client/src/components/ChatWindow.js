@@ -55,53 +55,51 @@ const ChatWindow = () => {
 
   return (
     <>
-      <Box sx={{ display: flex, justfiyContent: 'center' }}>
-        <Card
-          sx={{ 
-            padding: 2, 
-            marginTop: 10, 
-            width: '60%', 
-            backgroundColor: 'gray', 
-          }}
-          >
-          <Box sx={{ marginBottom: 5 }}>
-            {chat.map((message) => (
-              <Typography sx={{ textAlign: data.received ? 'left' : 'right' }} key={data.message}>{data.message}</Typography>
-              ))}
-          </Box>
-          <Box component="form" onSubmit={handleForm}>
-            {typing && (
-              <InputLabel sx={{ color: 'white' }} shrink htmlFor='message-input'>
-                Typing...
-              </InputLabel>
-            )}
-            <OutlinedInput 
-              sx={{ backgroundColor: 'white' }}
-              fullWidth
-              id='message-input'
-              label="Write message"
-              size="small"
-              value={message}
-              onChange={handleInput}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton type="submit" edge="end">
-                    <SendIcon />
-                  </IconButton>
-                </InputAdornment>
-              }
-              />
-            {/* <TextField 
-              id="standard-basic" 
-              label="Standard" 
-              variant="standard" 
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              />
-            <Button variant="text" type="submit">Send</Button> */}
-          </Box>
-        </Card>
-      </Box>
+      <Card
+        sx={{ 
+          padding: 2, 
+          marginTop: 10, 
+          width: '60%', 
+          backgroundColor: 'gray', 
+        }}
+        >
+        <Box sx={{ marginBottom: 5 }}>
+          {chat.map((message) => (
+            <Typography sx={{ textAlign: data.received ? 'left' : 'right' }} key={data.message}>{data.message}</Typography>
+            ))}
+        </Box>
+        <Box component="form" onSubmit={handleForm}>
+          {typing && (
+            <InputLabel sx={{ color: 'white' }} shrink htmlFor='message-input'>
+              Typing...
+            </InputLabel>
+          )}
+          <OutlinedInput 
+            sx={{ backgroundColor: 'white' }}
+            fullWidth
+            id='message-input'
+            label="Write message"
+            size="small"
+            value={message}
+            onChange={handleInput}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton type="submit" edge="end">
+                  <SendIcon />
+                </IconButton>
+              </InputAdornment>
+            }
+            />
+          {/* <TextField 
+            id="standard-basic" 
+            label="Standard" 
+            variant="standard" 
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            />
+          <Button variant="text" type="submit">Send</Button> */}
+        </Box>
+      </Card>
     </>
   )
 }

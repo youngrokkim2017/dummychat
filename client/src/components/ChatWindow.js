@@ -6,7 +6,7 @@ import { Box, Typography, OutlinedInput, InputAdornment, IconButton, Card, Input
 // import Button from "@mui/material/Button";
 // import TextField from "@mui/material/TextField";
 // import Box from "@mui/material/Box";
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom'
 
 const ChatWindow = () => {
   const { socket } = useOutletContext()
@@ -15,6 +15,7 @@ const ChatWindow = () => {
   const [chat, setChat] = useState([]);
   const [typing, setTyping] = useState(false);
   const [typingTimeout, setTypingTimeout] = useState(null)
+  const { roomId } = useParams()
 
   // useEffect(() => {
   //   setSocket(io('http://localhost:4000'))
@@ -63,8 +64,10 @@ const ChatWindow = () => {
           marginTop: 10, 
           width: '60%', 
           backgroundColor: 'gray', 
+          color: 'white',
         }}
-        >
+      >
+        {roomId && <Typography>Room: {roomId}</Typography>}
         <Box sx={{ marginBottom: 5 }}>
           {chat.map((data) => (
             <Typography sx={{ textAlign: data.received ? 'left' : 'right' }} key={data.message}>{data.message}</Typography>

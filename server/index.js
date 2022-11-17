@@ -22,8 +22,10 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     // console.log('socket connection is ready')
-    socket.on('send-message', (data) => {
-        socket.broadcast.emit('message-from-server', data)
+    socket.on('send-message', ({ message, roomId }) => {
+        let skt = socket.broadcast
+        skt = roomId ? skt.to(roomid) : skt
+        skt.emit('message-from-server', { message })
         // console.log('message received', data)
     })
 

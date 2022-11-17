@@ -40,7 +40,7 @@ const ChatWindow = () => {
   const handleForm = (e) => {
     e.preventDefault()
     // console.log(message)
-    socket.emit("send-message", { message })
+    socket.emit("send-message", { message, roomId })
     setChat((prev) => [...prev, { message, received: false }])
     setMessage("")
   }

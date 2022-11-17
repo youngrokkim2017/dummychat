@@ -47,12 +47,12 @@ const ChatWindow = () => {
 
   const handleInput = (e) => {
     setMessage(e.target.value)
-    socket.emit('typing-started')
+    socket.emit('typing-started', { roomId })
 
     if (typingTimeout) clearTimeout(typingTimeout)
 
     setTypingTimeout(setTimeout(() => {
-      socket.emit('typing-stopped')
+      socket.emit('typing-stopped', { roomId })
     }, 1000))
   }
 

@@ -27,12 +27,16 @@ io.on('connection', (socket) => {
         // console.log('message received', data)
     })
 
-    socket.on('typing-started', () => {
-        socket.broadcast.emit('typing-started-from-server')
+    socket.on('typing-started', ({ roomId }) => {
+        let skt = socket.broadcast
+        skt = roomId ? skt.to(roomid) : skt
+        skt.emit('typing-started-from-server')
     })
 
-    socket.on('typing-stopped', () => {
-        socket.broadcast.emit('typing-stopped-from-server')
+    socket.on('typing-stopped', ({ roomId }) => {
+        let skt = socket.broadcast
+        skt = roomId ? skt.to(roomid) : skt
+        skt.emit('typing-stopped-from-server')
     })
 
     socket.on('join-room', ({ roomId }) => {

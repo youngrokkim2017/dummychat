@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
+import { Typography } from '@mui/material'
+
+import ChatWindow from '../components/ChatWindow'
 
 const Room = () => {
   const params = useParams()
@@ -13,7 +16,9 @@ const Room = () => {
   }, [socket])
 
   return (
-    <div>Room</div>
+    <div>
+      <ChatWindow />
+    </div>
   )
 }
 

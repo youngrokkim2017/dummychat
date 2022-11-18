@@ -24,20 +24,20 @@ io.on('connection', (socket) => {
     // console.log('socket connection is ready')
     socket.on('send-message', ({ message, roomId }) => {
         let skt = socket.broadcast
-        skt = roomId ? skt.to(roomid) : skt
+        skt = roomId ? skt.to(roomId) : skt
         skt.emit('message-from-server', { message })
         // console.log('message received', data)
     })
 
     socket.on('typing-started', ({ roomId }) => {
         let skt = socket.broadcast
-        skt = roomId ? skt.to(roomid) : skt
+        skt = roomId ? skt.to(roomId) : skt
         skt.emit('typing-started-from-server')
     })
 
     socket.on('typing-stopped', ({ roomId }) => {
         let skt = socket.broadcast
-        skt = roomId ? skt.to(roomid) : skt
+        skt = roomId ? skt.to(roomId) : skt
         skt.emit('typing-stopped-from-server')
     })
 

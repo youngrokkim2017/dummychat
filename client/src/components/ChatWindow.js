@@ -69,9 +69,10 @@ const ChatWindow = () => {
       >
         {roomId && <Typography>Room: {roomId}</Typography>}
         <Box sx={{ marginBottom: 5 }}>
-          {chat.map((data) => (
-            <Typography sx={{ textAlign: data.received ? 'left' : 'right' }} key={data.message}>{data.message}</Typography>
-            ))}
+          {chat.map((data, i) => (
+            // <Typography sx={{ textAlign: data.received ? 'left' : 'right' }} key={data.message}>{data.message}</Typography>
+            <Typography sx={{ textAlign: data.received ? 'left' : 'right' }} key={i}>{data.message}</Typography>
+          ))}
         </Box>
         <Box component="form" onSubmit={handleForm}>
           {typing && (

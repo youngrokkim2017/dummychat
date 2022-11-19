@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Header />
+        <Header socket={socket} />
         <Box sx={{ display: 'flex', justfiyContent: 'center' }}>
           <Outlet context={{ socket }} />
           {/* <ChatWindow /> */}

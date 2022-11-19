@@ -11,9 +11,6 @@ const Header = () => {
             <Link to='/' style={{ textDecoration: 'none' }} >
                 <Button sx={{ color: 'white' }} variant='text'>Home</Button>
             </Link>
-            <Link to='/chats' style={{ textDecoration: 'none' }} >
-                <Button sx={{ color: 'white' }} variant='text'>Chats</Button>
-            </Link>
             <Link to={`/room/${roomId}`} style={{ textDecoration: 'none' }} >
                 <Button sx={{ color: 'white' }} variant='text'>Room1</Button>
             </Link>

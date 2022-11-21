@@ -4,6 +4,7 @@ import { Server } from 'socket.io';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import sockets from './socket/sockets.js';
 import router from './api/routes.js';
@@ -22,6 +23,8 @@ const io = new Server(httpServer, {
 });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');

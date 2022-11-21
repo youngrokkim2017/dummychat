@@ -16,6 +16,15 @@ const Header = ({ socket }) => {
     }
 
     useEffect(() => {
+        async function fetchRooms() {
+            const res = await fetch('http://localhost:4000/rooms')
+            const { rooms } = await res.json()
+            setRooms(rooms)
+        }
+        fetchRooms()
+    }, [])
+
+    useEffect(() => {
         if (!socket) return
         socket.on('new-room-created', ({ roomId }) => {
             setRooms([...rooms, roomId])
@@ -29,12 +38,12 @@ const Header = ({ socket }) => {
                     <Link to='/' style={{ textDecoration: 'none' }} >
                         <Button sx={{ color: 'white' }} variant='text'>Home</Button>
                     </Link>
+                    {rooms.map((room) => (
+                        <Link to={`/room/${room.roomId }`} style={{ textDecoration: 'none' }} key={room._id}>
+                            <Button sx={{ color: 'white' }} variant='text'>{room.name}</Button>
+                        </Link>
+                    ))}
                 </Box>
-                {rooms.map((room) => (
-                    <Link to={`/room/${room}`} style={{ textDecoration: 'none' }} key={room}>
-                        <Button sx={{ color: 'white' }} variant='text'>{room}</Button>
-                    </Link>
-                ))}
                 <Button sx={{ color: 'white' }} variant='text' onClick={createNewRoom}>
                     New Room
                 </Button>

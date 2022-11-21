@@ -3,8 +3,14 @@ import http from 'http';
 import { Server } from 'socket.io';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import mongoose from 'mongoose';
 
 import sockets from './socket/sockets.js';
+import router from './api/routes.js';
+
+await mongoose.connect(
+    // mongodb url
+)
 
 const app = express();
 const PORT = 4000;
@@ -20,6 +26,8 @@ const __dirname = path.dirname(__filename);
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 })
+
+app.use('/', router);
 
 io.on('connection', sockets)
 

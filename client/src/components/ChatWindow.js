@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import SendIcon from "@mui/icons-material/Send"
-import { Box, Typography, OutlinedInput, InputAdornment, IconButton, Card, InputLabel } from "@mui/material";
+import { Box, Typography, OutlinedInput, InputAdornment, IconButton, Card, InputLabel, Button } from "@mui/material";
 // import { Textfield, Box, Container, Typography, OutlinedInput, InputAdornment, IconButton } from "@mui/material";
 // import Button from "@mui/material/Button";
 // import TextField from "@mui/material/TextField";
@@ -56,6 +56,14 @@ const ChatWindow = () => {
     }, 1000))
   }
 
+  const removeRoom = async () => {
+    // await fetch(`http://localhost:4000/rooms/${roomId}`, {
+    //   method: 'DELETE',
+    // })
+
+    socket.emit('room-removed', { roomId })
+  }
+
   return (
     <>
       <Card
@@ -67,7 +75,10 @@ const ChatWindow = () => {
           color: 'white',
         }}
       >
-        {roomId && <Typography>Room: {roomId}</Typography>}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          {roomId && <Typography>Room: {roomId}</Typography>}
+          {roomId && <Button size='small' variant='text' color='secondary' onClick={removeRoom}>Delete Room</Button>}
+        </Box>
         <Box sx={{ marginBottom: 5 }}>
           {chat.map((data, i) => (
             // <Typography sx={{ textAlign: data.received ? 'left' : 'right' }} key={data.message}>{data.message}</Typography>

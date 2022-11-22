@@ -12,8 +12,8 @@ const Header = ({ socket, userId, setUserId }) => {
     const createNewRoom = () => {
         const roomId = uuidv4();
         navigate(`/room/${roomId}`)
-        socket.emit('new-room-created', { roomId })
-        setRooms([...rooms, roomId])
+        socket.emit('new-room-created', { roomId, userId })
+        // setRooms([...rooms, { roomId, name: 'Test', _id: 'testId' }])
     }
 
     const handleLogin = () => {
@@ -40,8 +40,11 @@ const Header = ({ socket, userId, setUserId }) => {
 
     useEffect(() => {
         if (!socket) return
-        socket.on('new-room-created', ({ roomId }) => {
-            setRooms([...rooms, roomId])
+        socket.on('new-room-created', ({ room }) => {
+            setRooms([...rooms, room])
+        })
+        socket.on('room-removed', ({ roomId }) => {
+            setRooms(rooms.filter(room => room.roomId !== roomId))
         })
     }, [socket])
 

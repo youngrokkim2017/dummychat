@@ -9,4 +9,9 @@ router.get('/rooms', async (req, res) => {
     res.json({ rooms });
 });
 
+// router.delete('/rooms/:roomId', async (req, res) => {
+//     await Room.deleteOne({ roomId: req.params.roomId });
+//     res.json({ data: { message: 'deleted' } });
+// });
+
 export default router;

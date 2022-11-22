@@ -1,5 +1,5 @@
 import BaseController from "./BaseController.js";
-import Room from '../../models/Room.js';
+import Room from '../../models/Rooms.js';
 
 class RoomController extends BaseController {
     joinRoom = ({ roomId }) => {

@@ -74,7 +74,7 @@ const ChatWindow = () => {
     fileRef.current.click();
   }
 
-  const handleFileSelected = () => {
+  const handleFileSelected = (e) => {
     if (!file) return
     const file = e.target.files[0];
     const reader = new FileReader();

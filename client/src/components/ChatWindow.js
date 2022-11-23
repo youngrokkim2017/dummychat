@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import SendIcon from "@mui/icons-material/Send";
 import { Box, Typography, OutlinedInput, InputAdornment, IconButton, Card, InputLabel, Button } from "@mui/material";
 import AttachFileIcon from '@mui/icons-material/AttachFile';
@@ -107,7 +107,7 @@ const ChatWindow = () => {
         <Box sx={{ marginBottom: 5 }}>
           {chat.map((data, i) => (
             data.type === 'image' ? (
-              <img style={{ float: data.received ? 'left' : 'right' }} src={data.message} alt='image-message' width='100' />
+              <img style={{ float: data.received ? 'left' : 'right' }} src={data.message} alt='' width='100' />
             )
             :
             (

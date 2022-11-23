@@ -8,10 +8,12 @@ import cors from 'cors';
 
 import sockets from './socket/sockets.js';
 import router from './api/routes.js';
+// const db = require('./config/keys.js').mongoURI
+import mongoURI from './config/keys.js';
 
-await mongoose.connect(
-    // mongodb url
-)
+await mongoose
+    // .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+    .connect(mongoURI, { useNewUrlParser: true })
 
 const app = express();
 const PORT = 4000;

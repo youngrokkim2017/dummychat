@@ -75,8 +75,8 @@ const ChatWindow = () => {
   }
 
   const handleFileSelected = (e) => {
-    if (!file) return
     const file = e.target.files[0];
+    if (!file) return
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
